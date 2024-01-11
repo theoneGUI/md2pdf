@@ -3,7 +3,7 @@ export const SavedText = () => {
 }
 
 export const HasSavedText = () => {
-    return localStorage.getItem('storedfile') !== undefined;
+    return localStorage.getItem('storedfile') !== undefined && localStorage.getItem('storedfile') !== null;
 }
 
 export default SavedText;
