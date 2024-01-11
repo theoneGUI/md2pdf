@@ -5,11 +5,13 @@ import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/darcula.css';
 import 'codemirror/mode/gfm/gfm.js';
 import { initialText } from '../../../Container/Hooks/InitialText';
+import { SavedText, HasSavedText } from '../../../Container/Hooks/SavedText';
+
 const Editor = ({ className, setText }) => {
   return (
     <CodeMirror
       className={className}
-      value={initialText}
+      value={HasSavedText() ? SavedText() : initialText}
       options={{
         mode: 'gfm',
         theme: 'darcula',

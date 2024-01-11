@@ -28,10 +28,15 @@ const Header = ({ className }) => {
     }
     window.print();
   };
+
+  const onSaveToBrowser = () => {
+    const pureMD2 = document.querySelector('.CodeMirror-code').innerText.split('\n').map((el, index) => (index % 2 !== 0 ? el : undefined)).filter((el) => el !== undefined && el !== null).join('\n').replaceAll('\u200b', '');  // you don't have to understand what's going on
+    localStorage.setItem("storedfile", pureMD2);
+  };
+
   return (
     <header className={className + " no-print"}>
       <p className="project"> md2pdf </p>
-
       <div className="menu">
         <UploadButton className="button upload" />
         <p className="button download" onClick={onTransform}>
@@ -39,6 +44,9 @@ const Header = ({ className }) => {
             🎉
           </span>
           <span>Export as PDF</span>
+        </p>
+        <p className="button download" onClick={onSaveToBrowser}>
+          <span>Save File</span>
         </p>
       </div>
       {/* <span className="author">Powered by @realdennis</span> */}

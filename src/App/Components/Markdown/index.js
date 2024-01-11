@@ -38,7 +38,7 @@ const Markdown = ({ className }) => {
         setWidth(pageX - startX);
       }}
     >
-      <Editor className="no-print" width={width} setText={setText} />
+      <Editor className="no-print editorWindow" width={width} setText={setText} />
       <DragBar
         className="no-print"
         isDrag={isDrag}

@@ -1,6 +1,7 @@
 import  { useState } from "react";
 import { initialText } from "./InitialText.js";
-const useText = (initialValue = initialText) => {
+import { SavedText, HasSavedText } from './SavedText';
+const useText = (initialValue = HasSavedText() ? SavedText() : initialText) => {
   const [state, setState] = useState(initialValue);
   return [state, setState];
 };
