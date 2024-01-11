@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import UploadButton from "./Upload.js";
 const Header = ({ className }) => {
-  const onTransfrom = () => {
+  const onTransform = () => {
     // get the file name
     let candidateTitle = "";
     const previewEl = document.querySelector(".preview");
@@ -18,29 +18,27 @@ const Header = ({ className }) => {
         document.title = currentTitle;
       });
     }
+    else {
+      const PDFName = prompt("Enter a name for the PDF file:");
+      const currentTitle = document.title;
+      document.title = PDFName;
+      window.requestAnimationFrame(() => {
+        document.title = currentTitle;
+      });
+    }
     window.print();
   };
   return (
     <header className={className + " no-print"}>
       <p className="project"> md2pdf </p>
-      <iframe
-        title="github-button"
-        className="project"
-        style={{ display: "block" }}
-        src="https://ghbtns.com/github-btn.html?user=realdennis&repo=md2pdf&type=star&count=true"
-        frameBorder="0"
-        scrolling="0"
-        width="100px"
-        height="20px"
-      />
 
       <div className="menu">
         <UploadButton className="button upload" />
-        <p className="button download" onClick={onTransfrom}>
+        <p className="button download" onClick={onTransform}>
           <span role="img" aria-label="download">
             🎉
           </span>
-          <span>Transform</span>
+          <span>Export as PDF</span>
         </p>
       </div>
       {/* <span className="author">Powered by @realdennis</span> */}
